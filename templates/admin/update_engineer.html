@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+{%include 'admin/Sheader.html'%}
+
+
+<body class="">
+    {%include 'admin/nav.html'%}
+    {%for i in user%}
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form method="POST" id="#t">
+            {%csrf_token%}
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Engineer Details</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Engineer Username</label>
+                        <input type="text" class="form-control" name="eng_username" id="update_username" readonly=""
+                            value="{{i.username}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Engineer First Name</label>
+                        <input type="text" class="form-control" name="eng_firstname" value="{{i.first_name}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Engineer Last Name</label>
+                        <input type="text" class="form-control" name="eng_lastname" value="{{i.last_name}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Engineer Password</label>
+                        <input type="text" class="form-control" name="eng_password" id="update_password"
+                            placeholder="Enter New Password">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {%endfor%}
+    {%include 'admin/Sfooter.html'%}
+    {%include 'admin/script.html' %}
+
+
+</body>
+
+</html>

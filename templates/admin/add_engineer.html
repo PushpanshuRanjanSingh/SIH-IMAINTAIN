@@ -1,126 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-{%include 'admin/Sheader.html' %}
+
+
+	
+	{%include 'admin/Sheader.html' %}
+
 <body class="">
-	{%include 'admin/nav.html' %}
-	<!-- Header -->
-	<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-		<div class="container-fluid">
-			<div class="header-body">
-				<!-- Card stats -->
-				<div class="row">
+			{%include 'admin/nav.html' %}
+		<!-- Header -->
+		
+	
+		<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+			<div class="container-fluid">
+				<div class="header-body">
+					<!-- Card stats -->
+					<div class="row">
 
-					<div class="col-xl order-xl-1">
-						<div class="card bg-secondary shadow">
-							<div class="card-header bg-white border-0">
-								<div class="row align-items-center">
-									<div class="col-8">
-										<h3 class="mb-0">Add Engineers</h3>
-									</div>
-								</div>
-							</div>
-							<form method="POST">
-								{%csrf_token%}
-								<div class="card-body">
-									<div class="pl-lg-12">
-										<div class="row">
-											<div class="col-lg-3">
-												<div class="form-group">
-													<label class="form-control-label" for="eng_name">First Name</label>
-													<input type="text" name="firstname" id="eng_name"
-														class="form-control form-control-alternative"
-														placeholder="First name" required>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div class="form-group">
-													<label class="form-control-label" for="eng_id">Last Name</label>
-													<input type="text" name="lastname" id="eng_id"
-														class="form-control form-control-alternative"
-														placeholder="Last name" required>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div class="form-group">
-													<label class="form-control-label" for="phone">User Name</label>
-													<input type="text" name="user_name"
-														class="form-control form-control-alternative"
-														placeholder="User Name(must be unique)" required>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div class="form-group">
-													<label class="form-control-label" for="pwd">Password</label>
-													<input type="text" name="pwd"
-														class="form-control form-control-alternative"
-														placeholder="Enter password" required>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="pl-lg-4">
-										<div class="form-group">
-											<button type="submit" id="add_btn"
-												class="btn btn-md btn-primary">Add</button>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
+			  <div class="col-xl order-xl-1">
+				<div class="card bg-secondary shadow">
+				  <div class="card-header bg-white border-0">
+					<div class="row align-items-center">
+					  <div class="col-8">
+						<h3 class="mb-0">Add Engineers</h3>
+					  </div>
 					</div>
+				  </div>
+				  <form method="POST">
+					  {%csrf_token%}
+				    <div class="card-body">
+					  <div class="pl-lg-12">
+						<div class="row">
+						  <div class="col-lg-3">
+							<div class="form-group">
+							  <label class="form-control-label" for="eng_name">First Name</label>
+							  <input type="text" name="firstname" id="eng_name" class="form-control form-control-alternative" placeholder="First name" required>
+							</div>
+						  </div>
+						  <div class="col-lg-3">
+							<div class="form-group">
+							  <label class="form-control-label" for="eng_id">Last Name</label>
+							  <input type="text" name="lastname" id="eng_id" class="form-control form-control-alternative" placeholder="Last name" required>
+							</div>
+						  </div>
+						  <div class="col-lg-3">
+							<div class="form-group">
+							  <label class="form-control-label" for="phone">User Name</label>
+							  <input type="text" name="user_name" class="form-control form-control-alternative" placeholder="User Name(must be unique)" required>
+							</div>
+						  </div>
+						  <div class="col-lg-3">
+							<div class="form-group">
+							  <label class="form-control-label" for="pwd">Password</label>
+							  <input type="text" name="pwd"  class="form-control form-control-alternative" placeholder="Enter password" required>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					  <div class="pl-lg-4">
+						<div class="form-group">
+						  <button type="submit" id="add_btn"  class="btn btn-md btn-primary">Add</button>
+						</div>
+					  </div>
+				  </div>
+				</form>
+				</div>
+			  </div>
 
+		  </div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container-fluid mt--7">
-		<!-- Table -->
-		<div class="row">
-			<div class="col">
-				<div class="card shadow">
-					<div class="card-header bg-white border-0">
-						<div class="row align-items-center">
-							<div class="col-8">
-								<h3 class="mb-0">Engineers</h3>
-							</div>
-						</div>
-					</div>
-					<div class="table-responsive py-2">
-						<table id="eng_tbl" class="table" style="width:100%">
-							<thead>
-								<tr>
-									<td>First Name</td>
-									<td>Last Name</td>
-									<td>User Name</td>
-									<td>Action</td>
-								</tr>
-							</thead>
-							<tbody id="list_tbl">
-								{%for i in engineer%}
-								<tr id="eng_{{i.id}}">
-									<td>{{i.first_name}}</td>
-									<td>{{i.last_name}}</td>
-									<td>{{i.username}}</td>
-									<td>
-										<a href="/admin/engineer/{{i.id}}"><button
-												class="btn btn-primary">Edit</button></a>
-										<button class="btn btn-danger">Delete</button>
-									</td>
-								</tr>
-								{%endfor%}
-							</tbody>
-						</table>
-					</div>
-				</div>
+		<div class="container-fluid mt--7">
+	  <!-- Table -->
+	  <div class="row">
+		<div class="col">
+		  <div class="card shadow">
+		  	<div class="card-header bg-white border-0">
+			  <div class="row align-items-center">
+			    <div class="col-8">
+				  <h3 class="mb-0">Engineers</h3>
+			    </div>
+			  </div>
+		    </div>
+			<div class="table-responsive py-2">
+				<table id="eng_tbl" class="table" style="width:100%">
+					<thead>
+						<tr>
+							<td>First Name</td>
+							<td>Last Name</td>
+							<td>User Name</td>
+							<td>Action</td>
+						</tr>
+					</thead>
+					<tbody id="list_tbl">
+						{%for i in engineer%}
+							<tr id="eng_{{i.id}}">
+								<td>{{i.first_name}}</td>
+								<td>{{i.last_name}}</td>
+								<td>{{i.username}}</td>
+		  						<td>
+									<a href="/admin/engineer/{{i.id}}"><button  class="btn btn-primary">Edit</button></a>
+									<button  onclick="deleteEng({{i.id}})"class="btn btn-danger">Delete</button>
+								</td>
+							</tr>
+						{%endfor%}
+					</tbody>
+				</table>
 			</div>
+		  </div>
+		</div>
+	  </div>
+			</div>
+			{%include 'admin/Sfooter.html'%}
 		</div>
 	</div>
-	{%include 'admin/Sfooter.html'%}
-	</div>
-	</div>
 
-	<div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="update_modal"
-		aria-hidden="true">
+	<div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="update_modal" aria-hidden="true">
 		<form method="POST">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
@@ -133,8 +128,7 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label>Engineer Username</label>
-							<input type="text" class="form-control" name="eng_username" id="update_username"
-								readonly="">
+							<input type="text" class="form-control" name="eng_username" id="update_username" readonly="">
 						</div>
 						<div class="form-group">
 							<label>Engineer First Name</label>
@@ -146,8 +140,7 @@
 						</div>
 						<div class="form-group">
 							<label>Engineer Password</label>
-							<input type="text" class="form-control" name="eng_password" id="update_password"
-								placeholder="Enter New Password">
+							<input type="text" class="form-control" name="eng_password" id="update_password" placeholder="Enter New Password">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -161,16 +154,12 @@
 
 	{%include 'admin/script.html' %}
 	<script type="text/javascript">
-		function updateEng(username) {
+		function updateEng(username){
 			console.log("Hi")
-			var name = username
+			var name=username
 			console.log("hi")
 			$('#update_username').val(username)
-			$('#update_firstname').val({
-				{
-					i.firstname
-				}
-			})
+			$('#update_firstname').val({{i.firstname}})
 			$('#update_modal').modal('show')
 
 		}
@@ -183,7 +172,7 @@
 		function addEngineer() {
 			$('#add_btn').prop('disabled', true)
 			$('#add_btn').html('Adding...')
-			if ($('#eng_name').val() == '' || $('#eng_id').val() == '' || $('#phone').val() == '' || $('#pwd').val() == '') {
+			if($('#eng_name').val() == '' || $('#eng_id').val() == '' || $('#phone').val() == '' || $('#pwd').val() == '') {
 				Swal.fire({
 					type: 'warning',
 					title: 'Engineer Details Empty'
@@ -194,27 +183,23 @@
 			}
 			$.ajax({
 				url: base_url + 'supervisor/engineers',
-				data: "eng_name=" + $('#eng_name').val() + '&eng_id=' + $('#eng_id').val() + '&phone=' + $('#phone')
-					.val() + '&password=' + $('#pwd').val(),
+				data: "eng_name="+$('#eng_name').val()+'&eng_id='+$('#eng_id').val()+'&phone='+$('#phone').val()+'&password='+$('#pwd').val(),
 				type: "POST",
-				success: function () {
+				success: function() {
 					Swal.fire({
 						type: 'success',
 						title: 'Engineer Added'
 					})
 					$('#add_btn').prop('disabled', false)
 					$('#add_btn').html('Add Another')
-					var html = '<tr id="eng_' + $('#eng_id').val() + '"><td>' + $('#eng_name').val() +
-						'</td><td>' + $('#eng_id').val() + '</td><td>' + $('#phone').val() +
-						'</td><td><button class="btn btn-primary">Edit</button><button class="btn btn-danger" onclick="deleteEng(' +
-						$('#eng_id').val() + ')">Delete</button></td></tr>'
+					var html = '<tr id="eng_'+$('#eng_id').val()+'"><td>'+$('#eng_name').val()+'</td><td>'+$('#eng_id').val()+'</td><td>'+$('#phone').val()+'</td><td><button class="btn btn-primary">Edit</button><button class="btn btn-danger" onclick="deleteEng('+$('#eng_id').val()+')">Delete</button></td></tr>'
 					$('#list_tbl').html(html + $('#list_tbl').html())
 					$('#eng_name').val('')
 					$('#eng_id').val('')
 					$('#phone').val('')
 					$('#pwd').val('')
 				},
-				error: function () {
+				error: function() {
 					Swal.fire({
 						type: 'error',
 						title: 'There was some error adding engineer. Please verify if Engineer ID already exists.'
@@ -228,8 +213,8 @@
 		function updateEngineer(id) {
 			$('#update_modal').modal('show')
 			$.ajax({
-				url: 'http://127.0.0.1:8000/' + 'admin/engineer/id=' + id,
-				success: function (resp) {
+				url: 'http://127.0.0.1:8000/' + 'admin/engineer/id='+id,
+				success: function(resp) {
 					var res = JSON.parse(resp)
 					$('#update_username').val(res.user_name)
 					$('#update_lastname').val(res.user_lastname)
@@ -246,20 +231,19 @@
 				showCancelButton: true,
 				confirmButtonText: 'Yes, delete',
 				confirmButtonColor: '#f5365b'
-			}).then(function (result) {
-				if (result.value) {
-					$('#eng_' + id).remove()
+			}).then(function(result) {
+				if(result.value) {
 					$.ajax({
-						url: base_url + 'supervisor/deleteEngineer',
-						type: "POST",
-						data: "eng_id=" + id,
-						success: function () {
+						url: base_url + 'admin/delete/'+id,
+						type: "GET",
+						success: function() {
 							Swal.fire({
 								type: 'success',
 								title: 'Engineer Deleted'
 							})
+							$('#eng_'+id).remove()
 						},
-						error: function () {
+						error: function() {
 							Swal.fire({
 								type: 'error',
 								title: 'There was some error!'

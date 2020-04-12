@@ -3,162 +3,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="manifest" href="{% static 'manifest.json' %}">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {%block title%}iMaintain | Login{%endblock%};
-  {%block body%}
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      color: #444;
-      font-family: calibri;
-    }
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      width: 100vw;
-    }
-    .login {
-      text-align: center;
-      position: relative;
-      width: 280px;
-    }
-    input,
-    button {
-      width: 100%;
-      border: 0;
-      border-radius: 20px;
-    }
-    input {
-      border-bottom: 2px solid #444;
-      padding: 12px 40px 12px 20px;
-    }
-    input,
-    button,
-    .group i,
-    p,
-    a {
-      font-size: 13.3333px;
-      font-weight: 600;
-    }
-    .group {
-      margin-bottom: 10px;
-      position: relative;
-    }
-    .group i {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-    }
-    button {
-      padding: 12px;
-      background-image: linear-gradient(to right, #009688, #000);
-      margin-bottom: 20px;
-      cursor: pointer;
-    }
-    button,
-    button i {
-      color: #fff;
-    }
-    button i {
-      margin-right: 5px;
-    }
-    p {
-      margin-bottom: 20px;
-    }
-    i.fa.fa-cogs,
-    a {
-      color: #009688;
-    }
-    i.fa.fa-cogs {
-      font-size: 60px;
-      margin-bottom: 20px;
-    }
-    h2 {
-      margin-bottom: 20px;
-   }
-    input:focus,
-    input:focus::placeholder,
-    input:focus+i {
-      color: #009688;
-    }
-    input:focus,
-    button:focus {
-      outline: 0;
-    }
-    body:before,
-    body::after {
-      content: "";
-      position: absolute;
-      height: 300px;
-      width: 500px;
-    }
-    body::before {
-      background-image: linear-gradient(to right, #009688, #000);
-      bottom: 0;
-      left: 0;
-      clip-path: polygon(0 0, 0 100%, 100% 100%);
-    }
-    body::after {
-      background-image: linear-gradient(to right, #000, #009688);
-      top: 0;
-      right: 0;
-      clip-path: polygon(100% 0, 0 0, 100% 100%);
-    }
-    @media (max-width: 767px) {
-      body:before,
-      body:after {
-        height: 150px;
-        width: 300px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {%block title%}iMaintain | Login{%endblock%};
+    
+    {%block body%}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #444;
+        font-family: calibri;
+      
       }
-    }
-  </style>
+      
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      
+      .login{
+        text-align: center;
+        position: relative;
+        width: 280px;
+      }
+      
+      input, button{
+        width: 100%;
+        border: 0;
+        border-radius: 20px;
+      } 
+      
+      input{
+        border-bottom: 2px solid #444;
+        padding: 12px 40px 12px 20px;
+      }
+      
+      input, button, .group i, p, a{
+        font-size: 13.3333px;
+        font-weight: 600;
+      }
+      
+      .group{
+        margin-bottom: 10px;
+        position: relative;
+      }
+      
+      .group i{
+        position: absolute;
+        top: 15px;
+        right: 20px;
+      }
+      
+      button{
+        padding: 12px;
+        background-image: linear-gradient(to right, #009688, #000);
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+      
+      button, button i{
+        color: #fff;
+      }
+      
+      button i{
+        margin-right:5px ;
+      }
+      
+      p{
+        margin-bottom: 20px;
+      }
+      
+      i.fa.fa-cogs, a{
+        
+        color: #009688;
+      }
+      
+      i.fa.fa-cogs{
+      
+        font-size: 60px;
+        margin-bottom: 20px;
+      }
+      
+      h2{
+        margin-bottom: 20px;
+      
+      }
+      
+      input:focus, input:focus::placeholder, input:focus+i{
+      
+        color: #009688;
+      }
+      
+      
+      input:focus, button:focus{
+      
+        outline: 0;
+      }
+      
+      body:before, body::after{
+      
+        content: "";
+        position: absolute;
+        height: 300px;
+        width: 500px;
+      }
+      
+      body::before{
+        background-image: linear-gradient(to right, #009688, #000);
+        bottom: 0;
+        left: 0;
+        clip-path: polygon(0 0, 0 100%, 100% 100%);
+      }
+      
+      body::after{
+        background-image: linear-gradient(to right, #000, #009688);
+        top: 0;
+        right: 0;
+        clip-path: polygon(100% 0, 0 0, 100% 100%);
+      }
+      
+      @media (max-width: 767px){
+      
+        body:before, body:after{
+      
+            height: 150px;
+            width: 300px;
+        }
+      }
+
+    </style>
 </head>
 <body>
-  <div class="login">
-    <i class="fa fa-cogs"></i>
-    <h2>Login</h2>
+    <div class="login">
+        <i class="fa fa-cogs"></i>
+        <h2>Login</h2>
 
-    <div class=w3-container>
-      {% if messages %}
-      <div class=w3-row style="text-align:center;">
-
-        {% for message in messages %}
-        <p style="background-color: rgba(202, 52, 15, 0.877); color:white">{{ message }}</p>
-        {% endfor %}
-      </div>
-      {% endif %}
-    </div>
-
-    <form method="POST">
-      {% csrf_token %}
-      <div class="group">
-        <input type="text" placeholder='Engineer User' name="eng_username">
-        <i class="fa fa-user-circle"></i>
-      </div>
-      <div class="group">
-        <input type="Password" placeholder="Password" name="eng_pass">
-        <i class="fa fa-user-secret"></i>
-      </div>
-      <button type="submit"> <i class="fa fa-send"></i> Login </button>
-      <!-- <p class="fs">Forgot <a href="#">Engineer ID</a> / <a href="#">Password</a> ?</p> -->
-    </form>
-  </div>
-
-  <!-- <script type="text/javascript">
+        <div class=w3-container >
+          {% if messages %}
+           <div class=w3-row style="text-align:center;">
+  
+                      {% for message in messages %}
+                      <p style="background-color: rgba(202, 52, 15, 0.877); color:white">{{ message }}</p>
+                      {% endfor %}
+          </div>
+          {% endif %}
+       </div>
+      
+       <form method="POST">
+        {% csrf_token %}
+        <div class="group">
+          <input type="text" placeholder='Engineer User' name="eng_username" required>
+              <i class="fa fa-user-circle" ></i>
+        </div>
+        <div class="group">
+          <input type="Password" placeholder="Password" name="eng_pass" required>
+              <i class="fa fa-user-secret"></i>
+        </div>    
+        <button type="submit"> <i class="fa fa-send"></i> Login </button>
+        <!-- <p class="fs">Forgot <a href="#">Engineer ID</a> / <a href="#">Password</a> ?</p> -->
+      </form>
+    </div> 
+  
+    <!-- <script type="text/javascript">
     // using jQuery
     var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
     </script> -->
 
-  <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script> 
 
 </body>
-
 </html>
 {% endblock %}

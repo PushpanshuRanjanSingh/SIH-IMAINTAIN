@@ -1,19 +1,20 @@
 {
+	"dir" : "ltr",
+	"lang" : "fi",
 	"name" : "iMaintain Engineer",
-	"scope" : ".",
+	"scope" : "/engineer",
 	"display" : "standalone",
-	"start_url" : "/",
+	"start_url" : "https://imaintain.drdivyalaparoscopy.com/engineer",
 	"short_name" : "iMaintain Engineer",
 	"theme_color" : "transparent",
 	"description" : "iMaintain Application for Engineer to scan QR Code and update service history for Airport Authority of India",
 	"orientation" : "any",
 	"background_color" : "transparent",
 	"related_applications" : "",
-	"lang" : "en-US",
 	"prefer_related_applications" : "false",
 	"icons" : [
 		{
-			"src": "/static/logo.png",
+			"src": "logo.png",
 			"sizes": "512x512"
 		}],
 	"screenshots" : [],

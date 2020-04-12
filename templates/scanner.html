@@ -2,65 +2,70 @@
 <!DOCTYPE html>
 <html>
 
-{%block title%}iMaintain | Scanner{%endblock%}
-{%include 'Eheader.html' %}
+		{%block title%}iMaintain | Scanner{%endblock%}
+		{%include 'Eheader.html' %}
 
-<style type="text/css">
-	canvas {
-		height: fit-content;
-		width: 100%;
-		position: fixed;
-	}
+	<style type="text/css">
+		canvas {
+			height: fit-content;
+			width: 100%;
+			position: fixed;
+		}
 
-	video {
-		height: 100%;
-		width: 100%;
-	}
+		video {
+			height: 100%;
+    		width: 100%;
+		}
 
-	.s3-card {
-		box-shadow: none !important;
-		background-color: #fff !important;
-		z-index: 1 !important;
-		position: relative !important;
-		border-radius: 0px;
-	}
+		.s3-card {
+		    box-shadow: none !important;
+		    background-color: #fff !important;
+		    z-index: 1 !important;
+		    position: relative !important;
+		    border-radius: 0px;
+		}
 
-	#monitor .scan {
-		width: 100%;
-		height: 10px;
-		margin-top: 250px;
-		background-color: #009687c9;
-		position: absolute;
-		z-index: 9999;
-		-moz-animation: scan 2s infinite;
-		-webkit-animation: scan 2s infinite;
-		animation: scan 0.8s infinite;
-		-webkit-animation-direction: alternate-reverse;
-
-	}
-
-	@-webkit-keyframes scan {
-
-		0%,
-		100% {
+		#monitor .scan
+		{
+		  width:100%;
+		  height:10px;
+		  margin-top: 250px;
+		  background-color:#009687c9;
+		  position:absolute;
+		  z-index:9999;
+		  -moz-animation: scan 2s infinite;
+		  -webkit-animation: scan 2s infinite;
+		  animation: scan 0.8s infinite;
+		  -webkit-animation-direction: alternate-reverse;
+		
+		}
+		
+		@-webkit-keyframes scan {
+		  0%, 100% {
 			-webkit-transform: translateY(0);
 			transform: translateY(0);
-		}
-
-		100% {
+		  }
+		  100% {
 			-webkit-transform: translateY(210px);
 			transform: translateY(240px);
+		  }
 		}
-	}
-</style>
+
+
+
+
+
+
+
+		
+	</style>
 
 <body class="w3-theme-l5">
 
 	<div class="w3-top">
 		<div class="w3-col s3">
 			<div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-				<a href="{{request.META.HTTP_REFERER}}" class="w3-bar-item w3-padding-large"><i
-						class="fa fa-arrow-left"></i></a>
+				<a href="{{request.META.HTTP_REFERER}}"  class="w3-bar-item w3-padding-large"><i class="fa fa-arrow-left"></i></a>
 			</div>
 		</div>
 		<div class="w3-col s9">
@@ -69,7 +74,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<div id="monitor">
 		<div class="scan"></div>
 		<canvas id="canvas" hidden></canvas>
@@ -79,10 +84,8 @@
 				<div class="w3-container s3-card w3-round-xlarge">
 					<br>
 					<i class="fa fa-id-card"></i>
-					<input placeholder="Enter Equipment ID" id="equipment-id" name="equip_id"
-						class="w3-input w3-margin-left w3-margin-bottom" type="text" required style="width:75%"><br>
-					<button class="w3-button w3-section w3-teal w3-ripple w3-round-xxlarge no-outline" type="button"
-						onclick="moveNow()" style="width:75%">Proceed</button></p>
+					<input placeholder="Enter Equipment ID" id="equipment-id" name="equip_id" class="w3-input w3-margin-left w3-margin-bottom" type="text" required style="width:75%"><br>
+					<button class="w3-button w3-section w3-teal w3-ripple w3-round-xxlarge no-outline" type="button" onclick="moveNow()" style="width:75%">Proceed</button></p>
 				</div>
 			</div>
 		</form>
@@ -112,5 +115,4 @@
 	<script type="text/javascript" src="{% static 'js/scanner.js' %}"></script>
 
 </body>
-
-</html>
+</html> 

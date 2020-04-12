@@ -1,220 +1,206 @@
 {%load static%}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>
-    iMaintain | Login
-  </title>
-  <!-- Favicon -->
-  <link href="{% static 'supervisor/assets/img/brand/favicon.png' %}" rel="icon" type="image/png">
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <!-- Icons -->
-  <link href="{% static 'supervisor/assets/js/plugins/nucleo/css/nucleo.css' %}" rel="stylesheet" />
-  <link href="{% static 'supervisor/assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css' %}"
-    rel="stylesheet" />
-  <!-- CSS Files -->
-  <link href="{% static 'supervisor/assets/css/argon-dashboard.css' %}" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'plugin/sweetalert2/sweetalert2.min.css' %}">
-  <script type="text/javascript" src="{% static 'plugin/sweetalert2/sweetalert2.min.js' %}"></script>
-  <link rel='manifest' href='https://imaintain.drdivyalaparoscopy.com/res/supervisor.webmanifest'>
-
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      color: #444;
-      font-family: calibri;
-
-    }
-
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      width: 100vw;
-    }
-
-    .login {
-      text-align: center;
-      position: relative;
-      width: 280px;
-    }
-
-    input,
-    button {
-      width: 100%;
-      border: 0;
-      border-radius: 20px;
-    }
-
-    input {
-      border-bottom: 2px solid #444;
-      padding: 12px 40px 12px 20px;
-    }
-
-    input,
-    button,
-    .group i,
-    p,
-    a {
-      font-size: 13.3333px;
-      font-weight: 600;
-    }
-
-    .group {
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .group i {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-    }
-
-    button {
-      padding: 12px;
-      background-image: linear-gradient(to right, #0225FF, #FFFFFF);
-      margin-bottom: 20px;
-      cursor: pointer;
-    }
-
-    button,
-    button i {
-      color: #fff;
-    }
-
-    button i {
-      margin-right: 5px;
-    }
-
-    p {
-      margin-bottom: 20px;
-    }
-
-    i.fa.fa-cogs,
-    a {
-
-      color: #0225FF;
-    }
-
-    i.fa.fa-cogs {
-
-      font-size: 60px;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-
-    }
-
-    input:focus,
-    input:focus::placeholder,
-    input:focus+i {
-
-      color: #0225FF;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+		iMaintain | Login
+	</title>
+	<!-- Favicon -->
+	<link href="{% static 'supervisor/assets/img/brand/favicon.png' %}" rel="icon" type="image/png">
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<!-- Icons -->
+	<link href="{% static 'supervisor/assets/js/plugins/nucleo/css/nucleo.css' %}" rel="stylesheet" />
+	<link href="{% static 'supervisor/assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css' %}" rel="stylesheet" />
+	<!-- CSS Files -->
+	<link href="{% static 'supervisor/assets/css/argon-dashboard.css' %}" rel="stylesheet" />
+	<link rel="stylesheet" href="{% static 'plugin/sweetalert2/sweetalert2.min.css' %}">
+	<script type="text/javascript" src="{% static 'plugin/sweetalert2/sweetalert2.min.js' %}"></script>
+	<link rel='manifest' href='https://imaintain.drdivyalaparoscopy.com/res/supervisor.webmanifest'>
 
 
-    input:focus,
-    button:focus {
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
 
-      outline: 0;
-    }
-
-    body:before,
-    body::after {
-
-      content: "";
-      position: absolute;
-      height: 300px;
-      width: 500px;
-    }
-
-    body::before {
-      background-image: linear-gradient(to right, #0225FF, #FFFFFF);
-      bottom: 0;
-      left: 0;
-      clip-path: polygon(0 0, 0 100%, 100% 100%);
-    }
-
-    body::after {
-      background-image: linear-gradient(to right, #FFFFFF, #0225FF);
-      top: 0;
-      right: 0;
-      clip-path: polygon(100% 0, 0 0, 100% 100%);
-    }
-
-    @media (max-width: 767px) {
-
-      body:before,
-      body:after {
-
-        height: 150px;
-        width: 300px;
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #444;
+        font-family: calibri;
+      
       }
-    }
-  </style>
+      
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      
+      .login{
+        text-align: center;
+        position: relative;
+        width: 280px;
+      }
+      
+      input, button{
+        width: 100%;
+        border: 0;
+        border-radius: 20px;
+      } 
+      
+      input{
+        border-bottom: 2px solid #444;
+        padding: 12px 40px 12px 20px;
+      }
+      
+      input, button, .group i, p, a{
+        font-size: 13.3333px;
+        font-weight: 600;
+      }
+      
+      .group{
+        margin-bottom: 10px;
+        position: relative;
+      }
+      
+      .group i{
+        position: absolute;
+        top: 15px;
+        right: 20px;
+      }
+      
+      button{
+        padding: 12px;
+        background-image: linear-gradient(to right, #0225FF, #FFFFFF);
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+      
+      button, button i{
+        color: #fff;
+      }
+      
+      button i{
+        margin-right:5px ;
+      }
+      
+      p{
+        margin-bottom: 20px;
+      }
+      
+      i.fa.fa-cogs, a{
+        
+        color: #0225FF;
+      }
+      
+      i.fa.fa-cogs{
+      
+        font-size: 60px;
+        margin-bottom: 20px;
+      }
+      
+      h2{
+        margin-bottom: 20px;
+      
+      }
+      
+      input:focus, input:focus::placeholder, input:focus+i{
+      
+        color: #0225FF;
+      }
+      
+      
+      input:focus, button:focus{
+      
+        outline: 0;
+      }
+      
+      body:before, body::after{
+      
+        content: "";
+        position: absolute;
+        height: 300px;
+        width: 500px;
+      }
+      
+      body::before{
+        background-image: linear-gradient(to right, #0225FF , #FFFFFF);
+        bottom: 0;
+        left: 0;
+        clip-path: polygon(0 0, 0 100%, 100% 100%);
+      }
+      
+      body::after{
+        background-image: linear-gradient(to right, #FFFFFF, #0225FF);
+        top: 0;
+        right: 0;
+        clip-path: polygon(100% 0, 0 0, 100% 100%);
+      }
+      
+      @media (max-width: 767px){
+      
+        body:before, body:after{
+      
+            height: 150px;
+            width: 300px;
+        }
+      }
+
+    </style>
 </head>
-
 <body>
-  <div class="login">
-    <i class="fa fa-cogs"></i>
-    <h2>Admin Login</h2>
+    <div class="login">
+        <i class="fa fa-cogs"></i>
+		<h2>Admin Login</h2>
+	
 
+		<form action="/admin/login/?next=/admin/" method="POST">
+			{% csrf_token %}
+			<div class="group"><input type="text" placeholder='Phone' name="username" ><i class="fa fa-user-circle" ></i></div>
+			<div class="group"><input type="Password" placeholder="password" name="password"><i class="fa fa-user-secret"></i></div>
+			<input type="hidden" name="text" value="/admin/">
+		
+			<button type="submit" > <i class="fa fa-send"></i>Login</button>
+		
+		
+		</form>
+    </div> 
+    <!--   Core   -->
 
-    <form action="/admin/login/?next=/admin/" method="POST">
-      {% csrf_token %}
-      <div class="group"><input type="text" placeholder='Phone' name="username"><i class="fa fa-user-circle"></i></div>
-      <div class="group"><input type="Password" placeholder="password" name="password"><i class="fa fa-user-secret"></i>
-      </div>
-      <input type="hidden" name="text" value="/admin/">
+	<script src="{% static 'supervisor/assets/js/plugins/jquery/dist/jquery.min.js' %}"></script>
+	<script src="{% static 'supervisor/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+	<!--   Optional JS   -->
+	<!--   Argon JS   -->
+	<script src="{% static 'supervisor/assets/js/argon-dashboard.min.js?v=1.1.1' %}"></script>
+	<script type="text/javascript" src="{% static 'js/sup_login.js'%}"></script>
+	<script>
+		// This is the service worker with the combined offline experience (Offline page + Offline copy of pages)
 
-      <button type="submit"> <i class="fa fa-send"></i>Login</button>
+		// Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
 
+		// Check compatibility for the browser we're running this in
+		if ("serviceWorker" in navigator) {
+		if (navigator.serviceWorker.controller) {
+			console.log("[PWA Builder] active service worker found, no need to register");
+		} else {
+			// Register the service worker
+				navigator.serviceWorker
+				.register("../supervisor-sw.js", {
+					scope: "./"
+				})
+				.then(function (reg) {
+					console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+				});
+		}
+		}
 
-    </form>
-  </div>
-  <!--   Core   -->
-
-  <script src="{% static 'supervisor/assets/js/plugins/jquery/dist/jquery.min.js' %}"></script>
-  <script src="{% static 'supervisor/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
-  <!--   Optional JS   -->
-  <!--   Argon JS   -->
-  <script src="{% static 'supervisor/assets/js/argon-dashboard.min.js?v=1.1.1' %}"></script>
-  <script type="text/javascript" src="{% static 'js/sup_login.js'%}"></script>
-  <script>
-    // This is the service worker with the combined offline experience (Offline page + Offline copy of pages)
-
-    // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
-
-    // Check compatibility for the browser we're running this in
-    if ("serviceWorker" in navigator) {
-      if (navigator.serviceWorker.controller) {
-        console.log("[PWA Builder] active service worker found, no need to register");
-      } else {
-        // Register the service worker
-        navigator.serviceWorker
-          .register("../supervisor-sw.js", {
-            scope: "./"
-          })
-          .then(function (reg) {
-            console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
-          });
-      }
-    }
-  </script>
-
+	</script>
+    
 </body>
-
 </html>

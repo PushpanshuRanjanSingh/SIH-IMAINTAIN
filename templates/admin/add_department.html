@@ -1,115 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-{%block title%}Add Department{%endblock%}
-{%include 'admin/Sheader.html'%}
+
+
+	{%block title%}Add Department{%endblock%}
+	{%include 'admin/Sheader.html'%}
+
+
 <body class="">
-	{%include 'admin/nav.html'%}
-	<!-- Header -->
-	<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-		<div class="container-fluid">
-			<div class="header-body">
-				<!-- 	 Card stats -->
-				<div class="row">
+		{%include 'admin/nav.html'%}
+		<!-- Header -->
+		<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+			<div class="container-fluid">
+				<div class="header-body">
+					<!-- Card stats -->
+				  <div class="row">
 					<div class="col-xl order-xl-1">
-						<div class="card bg-secondary shadow">
+		                <div class="card bg-secondary shadow">
+		                	
+		                  <div class="card-header bg-white border-0">
+		                    <div class="row align-items-center">
+		                      <div class="col-8">
+		                        <h3 class="mb-0">Add Department</h3>
+		                      </div>
+		                    </div>
+		                  </div>
 
-							<div class="card-header bg-white border-0">
-								<div class="row align-items-center">
-									<div class="col-8">
-										<h3 class="mb-0">Add Department</h3>
+		                  <div class="card-body">
+		                    <form method="POST">
+								{%csrf_token%}
+		                      <div class="pl-lg-12">
+		                        <div class="row">
+		                          <div class="col-lg-3">
+		                            <div class="form-group">
+		                              <label class="form-control-label" for="department">Department Name</label>
+		                              <input type="text" name="dept_name" id="department" class="form-control form-control-alternative" placeholder="Enter name" required>
+									  <input type="hidden" name="dept_id" value="0">
 									</div>
+		                          </div>
+		                        </div>
+		                      </div>
+		                      <div class="pl-lg-4">
+		                        <div class="form-group">
+		                          <button class="btn btn-md btn-primary">Add</button>
+		                        </div>
+		                      </div>
+		                    </form>
+		                  </div>
+
+		                </div>
+		              </div>
+		            </div>
+
+				</div>
+			</div>
+		</div>
+<div class="container-fluid mt--7">
+	  <!-- Table -->
+	<div class="row">
+		<div class="col">
+		  <div class="card shadow">
+			<div class="card-header border-0">
+			  <h3 class="mb-0">Department</h3>
+			</div>
+			<div class="table-responsive">
+
+			
+				
+
+			  <table class="table align-items-center table-flush">
+
+				<thead class="thead-light">
+				  <tr>
+					<th scope="col">Department Name</th>
+					<th scope="col text-right">Edit</th>
+				  </tr>
+				</thead>
+
+				<tbody>
+
+					{% for departments in department %}
+					    <tr id="eng_{{departments.id}}">
+							<th scope="row">
+							  <div class="media align-items-center">
+								<div class="media-body">
+								  <span class="mb-0 text-sm">{{departments.department_name }}</span>
 								</div>
-							</div>
+							  </div>
+							</th>
+							<td>
+							  <div>
+								<button onclick="openEditModal({{departments.id}}, '{{departments.department_name}}')" class="btn btn-md btn-primary ">Edit</button>
+								<button  onclick="deleteDep({{departments.id}})"class="btn btn-danger">Delete</button>
+							  </div>
+							</td>
+						</tr>
+					{%endfor%}
 
-							<div class="card-body">
-								<form method="POST">
-									{%csrf_token%}
-									<div class="pl-lg-12">
-										<div class="row">
-											<div class="col-lg-3">
-												<div class="form-group">
-													<label class="form-control-label" for="department">Department
-														Name</label>
-													<input type="text" name="dept_name" id="department"
-														class="form-control form-control-alternative"
-														placeholder="Enter name" required>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="pl-lg-4">
-										<div class="form-group">
-											<button class="btn btn-md btn-primary">Add</button>
-										</div>
-									</div>
-								</form>
-							</div>
+				</tbody>
 
-						</div>
-					</div>
-				</div>
-
+			  </table>
 			</div>
+		  </div>
+		</div>
+	  </div>
+			</div>
+			{%include 'admin/Sfooter.html'%}
 		</div>
 	</div>
-	<div class="container-fluid mt--7">
-		<!-- Table -->
-		<div class="row">
-			<div class="col">
-				<div class="card shadow">
-					<div class="card-header border-0">
-						<h3 class="mb-0">Department</h3>
-					</div>
-					<div class="table-responsive">
 
-
-
-
-						<table class="table align-items-center table-flush">
-
-							<thead class="thead-light">
-								<tr>
-									<th scope="col">Department Name</th>
-									<th scope="col text-right">Edit</th>
-								</tr>
-							</thead>
-
-							<tbody>
-
-								{% for departments in department %}
-								<tr>
-									<th scope="row">
-										<div class="media align-items-center">
-											<div class="media-body">
-												<span class="mb-0 text-sm">{{departments.department_name }}</span>
-											</div>
-										</div>
-									</th>
-									<td class="text-right">
-										<div class="col text-right">
-											<button
-												onclick="openEditModal({{departments.id}}, '{{departments.department_name}}')"
-												class="btn btn-md btn-primary">Edit</button>
-										</div>
-									</td>
-								</tr>
-								{%endfor%}
-
-							</tbody>
-
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	{%include 'admin/Sfooter.html'%}
-	</div>
-	</div>
-
-	<div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="update_modal"
-		aria-hidden="true">
-		<form method="POST">
+	<div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="update_modal" aria-hidden="true">
+		<form method="POST" >
 			{%csrf_token%}
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
@@ -134,13 +134,44 @@
 			</div>
 		</form>
 	</div>
-
+	
 	{%include 'admin/script.html'%}
 	<script type="text/javascript">
 		function openEditModal(id, name) {
 			$('#dept_name').val(name)
 			$('#dept_id').val(id)
 			$('#update_modal').modal('show')
+		}
+
+		function deleteDep(id) {
+			Swal.fire({
+				type: 'warning',
+				title: 'Do you really wanna delete the Department?',
+				text: 'It is irreversible',
+				showCancelButton: true,
+				confirmButtonText: 'Yes, delete',
+				confirmButtonColor: '#f5365b'
+			}).then(function(result) {
+				if(result.value) {
+					$.ajax({
+						url: base_url + 'admin/delete_dep/'+id,
+						type: "GET",
+						success: function() {
+							Swal.fire({
+								type: 'success',
+								title: 'Department Deleted'
+							})
+							$('#eng_'+id).remove()
+						},
+						error: function() {
+							Swal.fire({
+								type: 'error',
+								title: 'There was some error!'
+							})
+						}
+					})
+				}
+			})
 		}
 	</script>
 </body>

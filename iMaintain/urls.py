@@ -21,6 +21,5 @@ from engineer.admin import admin_site
 urlpatterns = [
     
     path('admin/', admin_site.urls),
-    path('',include('engineer.urls')),
-    path('', include('pwa.urls')),
+     path('',include('engineer.urls')),
 ]

@@ -64,7 +64,7 @@ def equipments(request,id):
         print(equi_id,curr_date,status,remark)
         if status:
             ename=equipment.objects.get(id=id).equipment_name
-            s=Service(equipment_id=equi_id,service_date=curr_date,service_status=status,service_remark=remark)
+            s=Service(equipment_id=equi_id,service_date=curr_date,service_status=status,service_remark=remark,user_id=request.user.id)
             s.save()
             atitle="{0} (ID {1}) Updated service of {2} (Equipment ID {3}) ".format(request.user.username,request.user.id,ename,id)
             adate=date.today()
@@ -77,13 +77,18 @@ def equipments(request,id):
             return redirect('')
     else:
         e=equipment.objects.filter(id=id)
-        ename=equipment.objects.get(id=id).equipment_name
-        s=Service.objects.raw('''SELECT engineer_service.id as service_id,auth_user.username,engineer_service.service_date,engineer_equipment.id,engineer_equipment.equipment_name,auth_user.id as user_id FROM engineer_service
-        JOIN auth_user ON auth_user.id=engineer_service.equipment_id
-        JOIN engineer_equipment ON engineer_equipment.id=engineer_service.equipment_id
-        ORDER BY engineer_service.id DESC Limit 3
-        ''')
         if len(e):
+            ename=equipment.objects.get(id=id).equipment_name
+            s=Service.objects.raw('''SELECT engineer_service.id as id ,auth_user.username,engineer_service.service_date,auth_user.id as user_id FROM engineer_service
+                                JOIN auth_user ON auth_user.id=engineer_service.user_id
+                                where engineer_service.equipment_id=%s
+                                ORDER BY engineer_service.id DESC LIMIT 3
+                                 '''%id)
+            # s=Service.objects.raw('''SELECT engineer_service.id as service_id,auth_user.username,engineer_service.service_date,engineer_equipment.id,engineer_equipment.equipment_name,auth_user.id as user_id FROM engineer_service
+            # JOIN auth_user ON auth_user.id=engineer_service.equipment_id
+            # JOIN engineer_equipment ON engineer_equipment.id=engineer_service.equipment_id
+            # ORDER BY engineer_service.id 
+            # ''')
             ran=randint(1,6)
             context={
                 'i':id,
@@ -113,11 +118,16 @@ def scanner(request):
 
 @login_required
 def history(request,id):
-    s=Service.objects.raw('''SELECT engineer_service.id as service_id,auth_user.username,engineer_service.service_date,engineer_equipment.id,engineer_equipment.equipment_name,auth_user.id as user_id FROM engineer_service
-        JOIN auth_user ON auth_user.id=engineer_service.equipment_id
-        JOIN engineer_equipment ON engineer_equipment.id=engineer_service.equipment_id
-        ORDER BY engineer_service.id DESC 
-        ''')
+    s=Service.objects.raw('''SELECT engineer_service.id as id ,auth_user.username,engineer_service.service_date,auth_user.id as user_id FROM engineer_service
+                                JOIN auth_user ON auth_user.id=engineer_service.user_id
+                                where engineer_service.equipment_id=%s
+                                ORDER BY engineer_service.id DESC 
+                                 '''%id)
+    # s=Service.objects.raw('''SELECT engineer_service.id as service_id,auth_user.username,engineer_service.service_date,engineer_equipment.id,engineer_equipment.equipment_name,auth_user.id as user_id FROM engineer_service
+    #     JOIN auth_user ON auth_user.id=engineer_service.equipment_id
+    #     JOIN engineer_equipment ON engineer_equipment.id=engineer_service.equipment_id
+    #     ORDER BY engineer_service.id DESC 
+    #     ''')
     context={
         'services':s
     }
@@ -131,12 +141,11 @@ def history(request,id):
 def downloadsinglereport(request,id):
     template = get_template('EReport.html')
     service=Service.objects.raw('''SELECT auth_user.username,engineer_service.service_date,engineer_service.service_status,auth_user.id,engineer_equipment.equipment_name,engineer_service.service_remark FROM engineer_service
-        JOIN auth_user ON auth_user.id=engineer_service.equipment_id and engineer_service.id=%s
+        JOIN auth_user ON auth_user.id=engineer_service.user_id and engineer_service.id=%s
         JOIN engineer_equipment ON engineer_equipment.id=engineer_service.equipment_id
         ORDER BY engineer_service.id 
         '''%id)
-    print(service)
-
+    print(len(service))
     context = {
            'service':service
         }
@@ -146,7 +155,6 @@ def downloadsinglereport(request,id):
         response = HttpResponse(pdf, content_type='application/force-download')#x-pdf
         filename = "EReport_%s.pdf" %("12341231")
         content = "inline; filename={}".format(filename)
-        print(content)
         download = request.GET.get("download")
         if download:
             content = "attachment; filename='%s'" %(filename)
@@ -154,21 +162,4 @@ def downloadsinglereport(request,id):
         return response
     return HttpResponse("Not found")
 
-#verify credetials
-# def check_login(request):
-#     userid=request.POST['id']
-#     password=request.POST['pass']
-#     print(userid,password)
-#     user=get_object_or_404(User,pk=userid)
-#     authi=auth.authenticate(username=user,password=password)
-    
-#     if authi is not None:
-#         auth.login(request,authi)
-#         request.session['eng-id']=userid
-#         request.session['eng_name']=user.username
-#         return HttpResponse(1)
 
-#     else:
-#         return HttpResponse(2)
-
-#Is user Logged in 

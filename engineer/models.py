@@ -23,6 +23,7 @@ class Department(models.Model):
 
 class Service(models.Model):
     equipment_id=models.BigIntegerField()
+    user_id=models.BigIntegerField()
     service_date=models.CharField(max_length=225)
     status=(
         ('1','Pending'),

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import path
 from .models import activity_tracker,equipment,Service,notification,Department
 from django.contrib import messages
@@ -29,7 +29,8 @@ class MyAdminSite(AdminSite):
              path('add_equipment/',self.admin_view(self.add_equipment),name="add_equipment"),
              path('add_engineer/',self.admin_view(self.add_engineer),name="add_engineer"),
              path('engineer/<int:id>',self.admin_view(self.update_engineer),name="update_engineer"),
-             path('delete/<int:id>',self.admin_view(self.update_engineer),name="delete_engineer"),
+             path('delete/<int:id>',self.admin_view(self.delete_engineer),name="delete_engineer"),
+             path('delete_dep/<int:id>',self.admin_view(self.delete_dep),name='delete_department'),
              path('downloadqrcode/<int:id>',self.admin_view(self.qrcode),name="downloadqrcode")       
         
         ]
@@ -74,14 +75,15 @@ class MyAdminSite(AdminSite):
     def add_department(self, request):
         if request.method=="POST":
             dept_name=request.POST['dept_name']
-            if  Department.objects.filter(department_name=dept_name).exists()==False:
-                d1=Department(department_name=dept_name)
-                d1.save()
-                messages.success(request,"Department Addded Successfully")
-            else:
-                dept_id=request.POST['dept_id']
+            dept_id=request.POST['dept_id']
+            if dept_id!='0':
                 dept=Department.objects.filter(id=dept_id).update(department_name=dept_name)
                 messages.success(request,"Department Updated Successfully")
+            else:
+                d1=Department(department_name=dept_name)
+                d1.save()
+                messages.success(request,"Department Added Successfully")
+
             request.method="GET"
             return MyAdminSite.index(self,request)
         else:
@@ -156,7 +158,7 @@ class MyAdminSite(AdminSite):
         color = 'rgb(0, 0, 0)'
         draw.text((x, y), message, fill=color, font=font)
         image.save('test.png')
-        with open('C:\\Users\\admin\\iMaintain\\test.png','rb') as f:
+        with open('C:\\Users\\admin\\iMaintain\\static\\images\\test.png','rb') as f:
             if f:
                 response = HttpResponse(f.read(), content_type='image/force-download')
                 filename = "Qrcode_%s.jpg" %(id)
@@ -168,7 +170,15 @@ class MyAdminSite(AdminSite):
                 return response
             return HttpResponse("Not found")
 
+    def delete_engineer(self,request,id):
+        u = User.objects.get(id=id)
+        u.delete()
+        return HttpResponse("Engineer Deleted")
 
+    def delete_dep(self,request,id):
+        d=Department.objects.get(id=id)
+        d.delete()
+        return HttpResponse("Department Deleted")
 
         
 

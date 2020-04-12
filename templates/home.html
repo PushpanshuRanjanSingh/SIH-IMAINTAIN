@@ -1,65 +1,75 @@
 {%load static%}
 <!DOCTYPE html>
 <html>
-{%block title%} iMaintain | Engineer Home{%endblock%}
-{%include 'Eheader.html' %}
+
+		{%block title%} iMaintain | Engineer Home{%endblock%}
+		{%include 'Eheader.html' %} 
+
 <body class="w3-theme-l5">
 
 
 	<div class="w3-top">
 		<div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-			<a href="{% url 'logout' %}"
-				class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"><i
-					class="fa fa-power-off"></i></a>
+			<a href="{% url 'logout' %}" class="w3-bar-item w3-button  w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"><i class="fa fa-power-off"></i></a>
 			<a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4">iMaintain</a>
 		</div>
 	</div>
 	<div class="w3-container">
 		{% if messages %}
-		<div class="w3-row w3-green" style="text-align:center;">
+		 <div class="w3-row w3-green" style="text-align:center;">
 
-			<span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">&times;</span>
-			{% for message in messages %}
-			<p>{{ message }}</p>
-			{% endfor %}
+			<span onclick="this.parentElement.style.display='none'"
+			class="w3-button w3-display-topright">&times;</span>
+					{% for message in messages %}
+					<p >{{ message }}</p>
+					{% endfor %}
 		</div>
 		{% endif %}
-	</div>
+	 </div>
 
-	<div class="w3-container w3-content animated fadeIn faster" style="max-width:1400px;margin-top:45px">
+	<div class="w3-container w3-content animated fadeIn faster" style="max-width:1400px;margin-top:45px">    
 		<div class="w3-row">
 			<p class="w3-small"><i class="fa fa-bell"></i>Notifications</p>
 			<div class="w3-col m3">
-				{%for notification in notifications%}
-				<div class="w3-card w3-round w3-white">
-					<div class="w3-container">
-						<div class="row">
-							<h6 class="w3-left">
-								To:
-								{% if notification.engineer_id == user.id%}
-								"Me"
-								{%elif notification.engineer_id == 0%}
-								"Everyone"
-								{%endif%}
-
-							</h6>
-							<h6 class="w3-right">{{notification.notification_date}} {{notification.notification_time }}
-							</h6>
+			{%for notification in notifications%}
+						{% if notification.engineer_id == user.id%}
+						<div class="w3-card w3-round w3-white">
+							<div class="w3-container">
+								<div class="row">
+									<h6 class="w3-left">
+										To:"Me"
+									</h6>
+									<h6 class="w3-right">{{notification.notification_date}} {{notification.notification_time }}</h6>
+								</div>
+							</div>
+							<div class="w3-padding">
+								{{notification.notification_text}}
+							</div>
 						</div>
-					</div>
-					<div class="w3-padding">
-						{{notification.notification_text}}
-					</div>
-				</div>
-				<br>
-
+						{%elif notification.engineer_id == 0%}
+						<div class="w3-card w3-round w3-white">
+							<div class="w3-container">
+								<div class="row">
+									<h6 class="w3-left">
+										To:"Everyone"
+									</h6>
+									<h6 class="w3-right">{{notification.notification_date}} {{notification.notification_time }}</h6>
+								</div>
+							</div>
+							<div class="w3-padding">
+								{{notification.notification_text}}
+							</div>
+						</div>					
+						{%endif%}		
+						<br>
+						
 				{%endfor%}
 				<br><br><br><br><br>
 			</div>
 		</div>
 	</div>
+	
+		{%include 'Efooter.html' %}
 
-	{%include 'Efooter.html' %}
 </body>
-
-</html>\
+</html> 

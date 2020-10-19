@@ -1,5 +1,6 @@
 # iMaintain
 
-Sentiment Analysis of Tweets used Textblob that analyse tweets with NLP and return Polarity and subjective.
-Regex were used to filter unwanted noise in tweets.
-Sentiment were Visualise by using Plotly Graph.
+A Mobile based Inventory Management System using QR code application.
+- Developed a QR based Web-app and Customise Supervisor Panel using Django Framework. 
+- Engineer and Supervisor Directly checkout the Process using tracking system that reduce more time.
+- Engineer and Supervisor can communicate through Message.
